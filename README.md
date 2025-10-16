@@ -5,11 +5,11 @@ This project focuses on analyzing the Brazilian Olist E-Commerce Dataset to unco
 The end-to-end data pipeline involves data cleaning in Excel, data transformation using Power Query, data analysis with PostgreSQL, and dashboard visualization using Power BI.
 
 📊 Project Overview
+🎯 Objective
 
-Objective:
 To perform data analysis on Olist's e-commerce data to understand sales trends, customer behavior, delivery performance, and review patterns.
 
-Tools Used:
+🧰 Tools Used
 
 📝 Excel – Initial data cleaning and formatting
 
@@ -34,8 +34,7 @@ olist_products_dataset	Product metadata including weight, dimensions
 olist_sellers_dataset	Seller details such as location
 olist_product_category_name_translation	Translation of product category names to English
 🛠️ Data Cleaning & Preparation
-
-Excel
+📝 Excel
 
 Removed duplicates and null values
 
@@ -43,7 +42,7 @@ Standardized column names
 
 Fixed data type issues (e.g., numeric vs. text)
 
-Power Query
+⚡ Power Query
 
 Combined multiple Excel files where needed
 
@@ -51,7 +50,7 @@ Cleaned inconsistent category names
 
 Prepared data for PostgreSQL import
 
-PostgreSQL
+🗃️ PostgreSQL
 
 Created tables with appropriate data types
 
@@ -65,56 +64,52 @@ All analysis was performed using PostgreSQL.
 Below are some key queries used in the project:
 
 🧮 Sales Analysis
-
-Yearly Total Sales
-
-SELECT 
-    EXTRACT(YEAR FROM o.order_purchase_timestamp) AS year,
-    SUM(p.payment_value) AS total_sales
-FROM olist_orders_dataset o
-JOIN olist_order_payments_dataset p ON o.order_id = p.order_id
-GROUP BY year
+📅 Yearly Total Sales
+SELECT EXTRACT(YEAR FROM o.order_purchase_timestamp) AS year, 
+       SUM(p.payment_value) AS total_sales 
+FROM olist_orders_dataset o 
+JOIN olist_order_payments_dataset p 
+ON o.order_id = p.order_id 
+GROUP BY year 
 ORDER BY total_sales;
 
-
-Sales by Product Category
-
-SELECT p.product_category_name,
-       SUM(o.price) AS total_sales,
-       COUNT(o.order_item_id) AS total_orders
-FROM olist_products_dataset p
-JOIN olist_order_items_dataset o ON p.product_id = o.product_id
-GROUP BY p.product_category_name
+🛍️ Sales by Product Category
+SELECT p.product_category_name, 
+       SUM(o.price) AS total_sales, 
+       COUNT(o.order_item_id) AS total_orders 
+FROM olist_products_dataset p 
+JOIN olist_order_items_dataset o 
+ON p.product_id = o.product_id 
+GROUP BY p.product_category_name 
 ORDER BY total_sales DESC;
 
 
-Top 10 Cities by Purchase Value
+🏙️ Top 10 Cities by Purchase Value
 
-Top 10 Sellers by Revenue
+🧾 Top 10 Sellers by Revenue
 
-Top Payment Types
+💳 Top Payment Types
 
 🚚 Delivery Performance
 
-On-time vs Delayed Orders
+📦 On-time vs Delayed Orders
 
-Average Delivery Time by State
+⏰ Average Delivery Time by State
 
-Percentage of Delayed vs On-Time Deliveries
+📊 Percentage of Delayed vs On-Time Deliveries
 
 👥 Customer & Review Insights
 
-Unique Customers per City
+🧍 Unique Customers per City
 
-Repeat Customers Count
+🔁 Repeat Customers Count
 
-Average Review Score by Product Category
+⭐ Average Review Score by Product Category
 
-Top 10 Categories with Lowest Ratings
+👎 Top 10 Categories with Lowest Ratings
 
 📊 Power BI Dashboard
-
-Key Dashboard Pages:
+📌 Key Dashboard Pages
 
 🧭 Overview – High-level KPIs like Total Sales, Orders, Revenue Trend, and Payment Breakdown.
 
@@ -126,7 +121,7 @@ Key Dashboard Pages:
 
 ⭐ Customer Reviews – Average review scores, top & bottom-rated categories.
 
-📌 Features Used:
+✨ Features Used
 
 Slicers for dynamic filtering (Year, State, Category)
 
@@ -137,7 +132,6 @@ Bar & Line charts for trends
 Maps using Latitude/Longitude fields
 
 Tooltips for detailed drill-down
-
 
 🧠 Key Insights
 
@@ -153,15 +147,26 @@ Tooltips for detailed drill-down
 
 🚀 How to Use This Project
 
+Clone the repository
+
+Import datasets into PostgreSQL
+
+Run SQL queries for analysis
+
+Open the Power BI dashboard file for interactive visualizations
+
 🧑‍💻 Author
 
 Shubham Kolge
 📍 Data Analyst | Power BI | SQL | Advance Excel
-💼 LinkedIn : https://www.linkedin.com/in/shubham-kolge-67a332211
-| 🌐Contact : Kolgeshubham14@gmail.com
+💼 LinkedIn: https://www.linkedin.com/in/shubham-kolge-67a332211
 
-📝 License : This project is licensed under the MIT License — feel free to use and modify.
+📧 Contact: Kolgeshubham14@gmail.com
+
+📝 License
 
 This project is licensed under the MIT License — feel free to use and modify.
 
-✅ Tags: #PowerBI #PostgreSQL #SQL #Excel #DataAnalysis #Dashboard #Ecommerce
+✅ Tags
+
+#PowerBI #PostgreSQL #SQL #Excel #DataAnalysis #Dashboard #Ecommercexcel #DataAnalysis #Dashboard #Ecommercealysis #Dashboard #Ecommerce
